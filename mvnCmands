@@ -1,0 +1,54 @@
+maven commands
+--------------
+1.mvn test : It will execute all available tests.
+
+
+2.mvn test -P <profileName> : This command will execute the test cases of errorValidationTest profile only
+example : mvn test -PerrorValidationTest	
+
+
+3.mvn test -P<profileName> -Dbrowser=<BrowserName> : this command will take the parameter of browser from command and will execute in that browser of the profile.
+example : mvn test -PerrorValidationTest -Dbrowser=Chrome	
+
+
+
+selenium grid
+-------------
+--** For creating hub, it will run as hub **--
+java -jar <selenium jar name> hub
+Example : java -jar selenium-server-4.24.0.jar hub    
+
+--** For creating hub, it will add node to a hub **--
+java -jar selenium-server-4.24.0.jar node --detect-drivers true
+ 
+--** For creating hub, it will add node to a hub of another pc **-- 
+java -jar <selenium grid jar> node --detect-drivers true --publish-events tcp://<ip address:4442> --subscribe-events tcp://<ip address here :4442>
+
+ **** for 4442,4443 check xpub in hub laptop 
+
+
+
+
+
+
+sample template
+-----------
+maven-archetype-QuickStart
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
