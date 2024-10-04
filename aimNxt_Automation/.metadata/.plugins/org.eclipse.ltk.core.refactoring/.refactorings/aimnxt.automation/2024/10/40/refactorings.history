@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;aimnxt.automation/src/test/java/aimnxt/data/menuItems.json&apos; to &apos;data.json&apos;" description="Rename resource &apos;menuItems.json&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/test/java/aimnxt/data/menuItems.json" name="data.json" stamp="1727774123980" updateReferences="true"/>
+</session>

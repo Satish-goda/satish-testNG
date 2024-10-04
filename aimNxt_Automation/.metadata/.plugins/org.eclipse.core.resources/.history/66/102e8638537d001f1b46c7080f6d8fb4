@@ -1,0 +1,139 @@
+package aimnxt.testPages;
+
+import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class DemoGetLinks {
+
+//	public void brokenLinks() throws InterruptedException {
+//		driver.get("https://aimnxt.org/");
+//		List<WebElement> footerLinks = driver.findElements(By.cssSelector(".footer-links li"));
+//		Thread.sleep(2000);
+//		System.out.println("-----footerLinks------");
+//		for (int i = 0; i < footerLinks.size(); i++) {
+//			System.out.println(footerLinks.get(i).getText());
+//		}
+//		System.out.println(footerLinks.size());
+//	}
+
+	public void navigateCoursesPages() throws InterruptedException {
+		ChromeOptions chromeOptions = new ChromeOptions();
+		chromeOptions.setAcceptInsecureCerts(true);  
+		WebDriver driver = new ChromeDriver(chromeOptions);
+		Actions act = new Actions(driver);
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		driver.get("https://an.client.godainfotech.com/");
+		driver.manage().window().maximize();
+		Thread.sleep(15000);
+		ArrayList<String> pageTitles = new ArrayList<String>();
+		List<WebElement> menus = driver.findElements(By.cssSelector("nav > ul > li"));
+		List<WebElement> CourseinnerMenus = driver
+				.findElements(By.cssSelector("#navbar > ul > li:nth-child(2) > ul > li > a"));
+		List<WebElement> partnersinnerMenus = driver
+				.findElements(By.cssSelector("#navbar > ul > li:nth-child(4) > ul > li > a"));
+		List<WebElement> exposureinnerMenus = driver
+				.findElements(By.cssSelector("#navbar > ul > li:nth-child(6) > ul > li > a"));
+		List<WebElement> formsinnerMenus = driver
+				.findElements(By.cssSelector("#navbar > ul > li:nth-child(7) > ul > li > a"));
+		List<WebElement> contactinnerMenus = driver
+				.findElements(By.cssSelector("#navbar > ul > li:nth-child(7) > ul > li > a"));
+
+		WebElement dismis = driver.findElement(By.cssSelector("#image-modal > button"));
+		dismis.click();
+		String keys = Keys.chord(Keys.CONTROL, Keys.ENTER);
+		System.out.println(menus.size());
+		// for (WebElement menu : menus) {
+		for (int j = 0; j < menus.size(); j++) {
+			if (menus.get(j).getAttribute("class").equalsIgnoreCase("dropdown")) {
+				if (menus.get(j).getText().equalsIgnoreCase("Study at AimNxt")) {
+					act.moveToElement(menus.get(j)).build().perform();
+					for (WebElement innerMenu : CourseinnerMenus) {
+						System.out.println(CourseinnerMenus.size());
+						innerMenu.sendKeys(keys);
+						js.executeScript("arguments[0].style.border='1px groove red'", innerMenu);
+						Thread.sleep(1000); // wait for see blinking
+						js.executeScript("arguments[0].style.border=''", innerMenu);
+					}
+				} else if (menus.get(j).getText().equalsIgnoreCase("Partners")) {
+					innerLoop(partnersinnerMenus, keys, js);
+				} else if (menus.get(j).getText().equalsIgnoreCase("Exposure")) {
+					innerLoop(exposureinnerMenus, keys, js);
+				} else if (menus.get(j).getText().equalsIgnoreCase("Forms")) {
+					innerLoop(formsinnerMenus, keys, js);
+				} else if (menus.get(j).getText().equalsIgnoreCase("Contact")) {
+					innerLoop(contactinnerMenus, keys, js);
+				}
+			}
+		}
+		driver.quit();
+	}
+
+	public void innerLoop(List<WebElement> CourseinnerMenus, String keys, JavascriptExecutor js)
+			throws InterruptedException {
+		for (WebElement innerMenu : CourseinnerMenus) {
+			System.out.println(CourseinnerMenus.size());
+			innerMenu.sendKeys(keys);
+			System.out.println("------From inner menu------");
+			js.executeScript("arguments[0].style.border='1px groove red'", innerMenu);
+			Thread.sleep(1000); // wait for see blinking
+			js.executeScript("arguments[0].style.border=''", innerMenu);
+
+		}
+	}
+
+//	public void getLinks() throws InterruptedException {
+//		WebDriver driver = new ChromeDriver();
+//		Actions act = new Actions(driver);
+//		JavascriptExecutor js = (JavascriptExecutor) driver;
+//		driver.get("https://aimnxt.org/");
+//		ArrayList<String> pageTitles = new ArrayList<String>();
+//		driver.manage().window().maximize();
+//		Thread.sleep(15000);
+//		String keys = Keys.chord(Keys.CONTROL, Keys.ENTER);
+//		WebElement dismis = driver.findElement(By.cssSelector("#image-modal > button"));
+//		dismis.click();
+//		List<WebElement> menus = driver.findElements(By.cssSelector("nav > ul > li"));
+//		List<WebElement> CourseinnerMenus = driver
+//				.findElements(By.cssSelector("#navbar > ul > li:nth-child(2) > ul > li > a"));
+
+//		for (WebElement menu : menus) {
+//			System.out.println(menu.getText());
+//			if (menu.getAttribute("class").equalsIgnoreCase("dropdown")) {
+//				act.moveToElement(menu).build().perform();
+//				if (menu.getText().equalsIgnoreCase("Study at AimNxt")) {
+//					act.moveToElement(menu).build().perform();
+//					List<WebElement> coursesMenu = driver
+//							.findElements(By.cssSelector("#navbar > ul > li:nth-child(2) > ul > li > a "));
+//					for (WebElement courseMenu : coursesMenu) {
+//						courseMenu.sendKeys(keys);
+//						System.out.println(courseMenu);
+//					}
+//				}
+//				innerMenu.sendKeys(keys);
+//				js.executeScript("arguments[0].style.border='1px groove red'", innerMenu);
+//				Thread.sleep(1000); // wait for see blinking
+//				js.executeScript("arguments[0].style.border=''", innerMenu);
+
+//			}
+//
+//		}
+//	}
+
+	public static void main(String[] args) throws InterruptedException {
+		DemoGetLinks dgl = new DemoGetLinks();
+//		dgl.getLinks();
+		dgl.navigateCoursesPages();
+	}
+}

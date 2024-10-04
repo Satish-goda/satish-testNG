@@ -1,0 +1,302 @@
+package aimnxt.pageObjects;
+
+import java.util.Scanner;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+import objectComponents.BaseObject;
+
+public class CcnaCoursePage extends BaseObject {
+
+	WebDriver driver;
+	Actions actions;
+	Scanner sc;
+
+	public CcnaCoursePage(WebDriver driver) {
+		super(driver);
+		this.driver = super.driver;
+		PageFactory.initElements(driver, this);
+		actions = new Actions(driver);
+		sc = new Scanner(System.in);
+	}
+
+	@FindBy(css = "nav> ul > li:nth-child(2) > a ")
+	private WebElement coursesMenu;
+
+	@FindBy(css = "nav> ul > li:nth-child(2)  > ul > li:nth-child(1) > a ")
+	private WebElement course;
+
+	@FindBy(css = "#career-guidance-modal > div > div > div")
+	private WebElement coursePopUp;
+
+	@FindBy(css = "#career-guidance-modal > div > div > div > button")
+	private WebElement coursePopDismisBtn;
+
+	@FindBy(css = "#course > div > div")
+	private WebElement courseForm;
+
+	@FindBy(css = "#course > div > div > div > h1")
+	private WebElement courseFormText;
+
+	@FindBy(css = "#course > div > div > div > p:nth-child(2)")
+	private WebElement courseFormTextTagLine;
+
+	@FindBy(css = "#course > div > div > div > p:nth-child(3)")
+	private WebElement courseFormTextTagLineTwo;
+
+	@FindBy(css = "#course > div > div > div > div  > h4")
+	private WebElement courseFormRegtitle;
+
+	@FindBy(css = "#course > div > div > div > div  > p")
+	private WebElement courseFormRegTagLine;
+
+	@FindBy(css = "#course")
+	private WebElement nameInput;
+
+	@FindBy(css = "#email")
+	private WebElement emailInput;
+
+	@FindBy(css = "#phone")
+	private WebElement phoneInput;
+
+	@FindBy(css = "#course > div > div > div > div > Form > div:nth-child(5)>button:first-child")
+	private WebElement downloadCurriBtn;
+
+	@FindBy(css = "#curriculam-modal > div > div > div ")
+	private WebElement downloadCurriPopup;
+
+	@FindBy(css = "#curriculam-modal > div > div > div > span")
+	private WebElement downloadCurriModalText;
+
+	@FindBy(css = "#curriculam-modal > div > div > div > p")
+	private WebElement downloadCurriModalTextP;
+
+	@FindBy(css = "#curriculam-modal-form > div:nth-child(1) > input")
+	private WebElement nameInputInDownloadCurriModal;
+
+	@FindBy(css = "#curriculam-modal-form > div:nth-child(3) > input")
+	private WebElement numInputInDownloadCurriModal;
+
+	@FindBy(css = "#curriculam-modal-form > div:nth-child(4) > input")
+	private WebElement emailInputInDownloadCurriModal;
+
+	@FindBy(css = "#send_otp")
+	private WebElement sendOtpBtn;
+
+	@FindBy(css = "#scope:nth-child(1)")
+	private WebElement courseIntro;
+
+	@FindBy(css = "#scope:nth-child(2)")
+	private WebElement courseIntroContinue;
+
+	@FindBy(css = "#key-highlights")
+	private WebElement keyHighlights;
+
+	@FindBy(xpath = "/html/body/main/section[3]/div/div/div")
+	private WebElement regForDemo;
+
+	@FindBy(xpath = "#scope > div > div > div > div > a > button")
+	private WebElement regForDemoBtn;
+
+	@FindBy(xpath = "#scope > div")
+	private WebElement regForDemoBtngz;
+
+	@FindBy(xpath = "/html/body/main/section[4]/div")
+	private WebElement courseObjective;
+
+	@FindBy(xpath = "/html/body/main/section[4]/div/div/div/div/div/div")
+	private WebElement objectiveCards;
+
+	@FindBy(xpath = "/html/body/main/section[4]/div/div/div/div")
+	private WebElement objectiveCardsContainer;
+
+	@FindBy(xpath = "/html/body/main/section[6]/div")
+	private WebElement careerOpportunity;
+
+	@FindBy(xpath = "/html/body/main/section[7]/div")
+	private WebElement hiringPartners;
+
+	@FindBy(xpath = "/html/body/main/div[3]")
+	private WebElement courseDuration;
+
+	public void clickCourse() {
+		hoverCoursesClickCourse(coursesMenu, course);
+	}
+
+	public String getCurrentUrl() {
+		return driver.getCurrentUrl();
+	}
+
+	public String PageTitle() {
+		return driver.getTitle();
+	}
+
+	public boolean isPopDisplayed() {
+		waitToAppearPopUp(coursePopUp);
+		return coursePopUp.isDisplayed();
+	}
+
+	public boolean isPopDismisBtnDisplayed() {
+		waitToAppearPopUp(coursePopDismisBtn);
+		return coursePopDismisBtn.isDisplayed();
+	}
+
+	public void clickPopDismisBtn() {
+		coursePopDismisBtn.click();
+	}
+
+	public boolean isCoursePopupDisappear() {
+		return coursePopUp.isDisplayed();
+	}
+
+	public boolean isCourseFormDisplayed() {
+		return courseForm.isDisplayed();
+	}
+
+	public boolean isCourseFormTextDisplayed() {
+		return courseFormText.isDisplayed();
+	}
+
+	public String getCourseFormTextDisplayedText() {
+		return courseFormText.getText();
+	}
+
+	public boolean isCourseFormTextTagLineDisplayed() {
+		return courseFormTextTagLine.isDisplayed();
+	}
+
+	public String getCourseFormTagLineText() {
+		return courseFormTextTagLine.getText();
+	}
+
+	public boolean isCourseFormTextTagLineTwoDisplayed() {
+		return courseFormTextTagLineTwo.isDisplayed();
+	}
+
+	public String getCourseFormTagLineTextTwoText() {
+		return courseFormTextTagLineTwo.getText();
+	}
+
+	public boolean iscourseFormRegTitleDisplayed() {
+		return courseFormRegtitle.isDisplayed();
+	}
+
+	public String getCourseFormRegtitleText() {
+		return courseFormRegtitle.getText();
+	}
+
+	public boolean isCourseFormRegTagLineDisplayed() {
+		return courseFormRegTagLine.isDisplayed();
+	}
+
+	public String getCourseFormRegTagLineText() {
+		return courseFormRegTagLine.getText();
+	}
+
+	public boolean isNameInputDisplayedInCourseReg() {
+		return nameInput.isDisplayed();
+	}
+
+	public void sendKeysToNameInput(String name) {
+		nameInput.sendKeys(name);
+	}
+
+	public boolean isEmailInputDisplayedInCourseReg() {
+		return emailInput.isDisplayed();
+	}
+
+	public void sendKeysToEmailInput(String email) {
+		emailInput.sendKeys(email);
+	}
+
+	public boolean isPhoneInputDisplayedInCourseReg() {
+		return phoneInput.isDisplayed();
+	}
+
+	public void sendKeysToPhoneInput(CharSequence[] num) {
+		phoneInput.sendKeys(num);
+	}
+
+	public boolean isdownloadCurriBtnDisplayedInCourseReg() {
+		return downloadCurriBtn.isDisplayed();
+	}
+
+	public void clickDownloadCurriBtnInCourseReg() {
+		downloadCurriBtn.click();
+	}
+
+	public String getDownloadCurriText() {
+		return downloadCurriModalText.getText() + downloadCurriModalTextP.getText();
+	}
+
+	public boolean isNameInputDisplayedInDownloadcurriculam() {
+		return nameInputInDownloadCurriModal.isDisplayed();
+	}
+
+	public void sendKeysToNameInputOfDownloadcurriculamModal(String name) {
+		nameInputInDownloadCurriModal.sendKeys(name);
+	}
+
+	public boolean isEmailInputIsDisplayedInDownloadCurriculamModal() {
+		return emailInputInDownloadCurriModal.isDisplayed();
+	}
+
+	public void sendKeysToEmailInputOfDownloadCurriculam(String email) {
+		emailInputInDownloadCurriModal.sendKeys(email);
+	}
+
+	public boolean isNumInputIsDisplayedInDownloadCurriculamModal() {
+		return numInputInDownloadCurriModal.isDisplayed();
+	}
+
+	public void sendKeysToNumInputOfDownloadCurriculam(CharSequence[] num) {
+		numInputInDownloadCurriModal.sendKeys(num);
+	}
+
+	public void clickSendOtpBtn(String otp) {
+		System.out.println("Enter Otp");
+		otp = sc.next();
+		sendOtpBtn.sendKeys(otp);
+	}
+
+	public boolean ccnaCourseIntro() {
+		return courseIntro.isDisplayed();
+	}
+
+	public boolean ccnaCourseDetails() {
+		return courseIntroContinue.isDisplayed();
+	}
+
+	public boolean iskeyHighlightsDisplayed() {
+		return keyHighlights.isDisplayed();
+	}
+
+	public boolean isRegForDemoDisplayed() {
+		return regForDemo.isDisplayed();
+	}
+
+	public boolean isRegForDemoContainsBtn() {
+		return regForDemoBtn.isDisplayed();
+	}
+
+	public boolean isCourseObjectiveDisplayed() {
+		return courseObjective.isDisplayed();
+	}
+
+	public boolean isCareerOpportunitiesDisplayed() {
+		return careerOpportunity.isDisplayed();
+	}
+
+	public boolean isHiringPartnersDisplayed() {
+		return hiringPartners.isDisplayed();
+	}
+
+	public boolean isCourseDurationDisplayed() {
+		return courseDuration.isDisplayed();
+	}
+
+}

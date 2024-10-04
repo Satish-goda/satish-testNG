@@ -1,0 +1,66 @@
+package aimnxt.testPages;
+
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.testng.asserts.SoftAssert;
+
+public class Demo {
+
+	public static ArrayList<String> getMenuItems() throws IOException {
+		ArrayList<String> expectedMenus = new ArrayList<String>();
+		String content = new String(Files.readAllBytes(
+				Paths.get(System.getProperty("user.dir") + "//src//test//java//aimnxt//data//menuItems.json")));
+		JSONObject jsonObject = new JSONObject(content);
+		JSONArray menuItemsArray = jsonObject.getJSONArray("menuItems");
+		ArrayList<String> menuItems = new ArrayList<String>();
+		for (int i = 0; i < menuItemsArray.length(); i++) {
+			// menuItems[i] =
+			menuItems.add(menuItemsArray.getString(i).toString());
+		}
+
+		return menuItems;
+	}
+
+	@FindBy(css = "div > ul > li >a")
+	private List<WebElement> footerLinks;
+	
+	
+	public void brokenLinks() throws MalformedURLException, IOException {
+		SoftAssert softAssert = new SoftAssert();
+		for (WebElement link : footerLinks)
+		{
+			String url = link.getAttribute("href");
+			HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
+			conn.setRequestMethod("HEAD");
+			conn.connect();
+			int respCode = conn.getResponseCode();
+			System.out.println(respCode);
+			softAssert.assertTrue(respCode < 400, "The link with Text" + link.getText() + " is broken with code" + respCode);
+		}
+		softAssert.assertAll();
+	}
+	
+	
+	
+	
+	public static void main(String[] args) throws IOException {
+
+		ArrayList<String> menuItems = getMenuItems();
+		System.out.println(menuItems);
+		// Print the menu items to verify
+//		for (String item : menuItems) {
+//			System.out.println(item);
+//		}
+	}
+}

@@ -1,0 +1,149 @@
+package aimnxt.testPages;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.devtools.DevTools;
+import org.openqa.selenium.devtools.HasDevTools;
+import org.openqa.selenium.devtools.v127.network.Network;
+import org.openqa.selenium.interactions.Actions;
+
+import com.google.common.collect.ImmutableList;
+
+public class finalDemo {
+
+	public void navigateCoursesPages() throws InterruptedException {
+		ChromeOptions chromeOptions = new ChromeOptions();
+		chromeOptions.setAcceptInsecureCerts(true);
+		chromeOptions.addArguments("--disable-notifications");
+		// chromeOptions.set set_preference("dom.webnotifications.enabled", False);
+		WebDriver driver = new ChromeDriver(chromeOptions);
+		Actions act = new Actions(driver);
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+
+//		DevTools devtools = ((HasDevTools) driver).getDevTools();
+//		devtools.createSession();
+//		devtools.send(Network.enable(Optional.empty(), Optional.empty(), Optional.empty()));
+//		devtools.send(Network.setBlockedURLs(ImmutableList.of("twk-chunk-*")));  
+
+		// Navigate to the website
+		driver.get("https://an.client.godainfotech.com/");
+		driver.manage().window().maximize();
+
+		// Capture and print window handles
+		Thread.sleep(15000);
+
+		ArrayList<String> pageTitles = new ArrayList<String>();
+		String[][] titlesRespectiveUrls = null;
+		List<WebElement> menus = driver.findElements(By.cssSelector("nav > ul > li > a"));
+		List<WebElement> CourseinnerMenus = driver
+				.findElements(By.cssSelector("#navbar > ul > li:nth-child(2) > ul > li > a"));
+		List<WebElement> partnersinnerMenus = driver
+				.findElements(By.cssSelector("#navbar > ul > li:nth-child(4) > ul > li > a"));
+		List<WebElement> exposureinnerMenus = driver
+				.findElements(By.cssSelector("#navbar > ul > li:nth-child(6) > ul > li > a"));
+		List<WebElement> formsinnerMenus = driver
+				.findElements(By.cssSelector("#navbar > ul > li:nth-child(7) > ul > li > a"));
+		List<WebElement> contactinnerMenus = driver
+				.findElements(By.cssSelector("#navbar > ul > li:nth-child(8) > ul > li > a"));
+
+		WebElement dismis = driver.findElement(By.cssSelector("#image-modal > button"));
+		dismis.click();
+
+		String keys = Keys.chord(Keys.CONTROL, Keys.ENTER);
+
+		// Loop through the menus
+		for (int j = 0; j < menus.size(); j++) {
+			js.executeScript("arguments[0].style.border='4px groove yellow'", menus.get(j));
+			Thread.sleep(1000); // wait for see blinking
+			js.executeScript("arguments[0].style.border=''", menus.get(j));
+			WebElement parentLi = menus.get(j).findElement(By.xpath("..")); // get the parent of a which menus
+			if (parentLi.getAttribute("class").equalsIgnoreCase("dropdown")) {
+				if (menus.get(j).getText().equalsIgnoreCase("Study at AimNxt")) {
+					act.moveToElement(menus.get(j)).build().perform();
+					for (WebElement innerMenu : CourseinnerMenus) {
+						innerMenu.sendKeys(keys);
+						js.executeScript("arguments[0].style.border='1px groove red'", innerMenu);
+						Thread.sleep(1000); // wait for see blinking
+						js.executeScript("arguments[0].style.border=''", innerMenu);
+					}
+				} else if (menus.get(j).getText().equalsIgnoreCase("Partners")) {
+					act.moveToElement(menus.get(j)).build().perform();
+					innerLoop(partnersinnerMenus, keys, js);
+				} else if (menus.get(j).getText().equalsIgnoreCase("Exposure")) {
+					act.moveToElement(menus.get(j)).build().perform();
+					innerLoop(exposureinnerMenus, keys, js);
+				} else if (menus.get(j).getText().equalsIgnoreCase("Forms")) {
+					act.moveToElement(menus.get(j)).build().perform();
+					innerLoop(formsinnerMenus, keys, js);
+				} else if (menus.get(j).getText().equalsIgnoreCase("Contact")) {
+					act.moveToElement(menus.get(j)).build().perform();
+					innerLoop(contactinnerMenus, keys, js);
+				}
+			} else if (j > 0) {
+				menus.get(j).sendKeys(keys);
+			}
+		}
+		Set<String> windowHandles = driver.getWindowHandles();
+
+		for (String handle : windowHandles) {
+			driver.switchTo().window(handle);
+			DevTools devtools = ((HasDevTools) driver).getDevTools();
+			devtools.createSession();
+			devtools.send(Network.enable(Optional.empty(), Optional.empty(), Optional.empty()));
+			// Block network requests
+			devtools.send(Network.setBlockedURLs(ImmutableList.of("twk-chunk-*")));
+			pageTitles.add(driver.getTitle());
+			System.out.println(pageTitles);
+
+			// Assuming you have already set up your driver and obtained windowHandles
+//			for (String handle : windowHandles) {
+//			    driver.switchTo().window(handle);
+//			    
+//			    // Create a new DevTools session for the current window
+//			    DevTools devtools = ((HasDevTools) driver).getDevTools();
+//			    devtools.createSession();
+//			    devtools.send(Network.enable(Optional.empty(), Optional.empty(), Optional.empty()));
+//			    devtools.send(Network.setBlockedURLs(ImmutableList.of("twk-chunk-*")));
+//
+//			    // Optional: wait for the page to load (if needed)
+//			    // Thread.sleep(1000); // Avoid using sleep; consider WebDriverWait instead
+//
+//			    // Collect page titles
+//			    String title = driver.getTitle();
+//			    pageTitles.add(title);
+//			    System.out.println("Current Page Title: " + title);
+//			    System.out.println("Total Page Titles: " + pageTitles.size());
+//			}
+
+		}
+
+	}
+
+	public void innerLoop(List<WebElement> CourseinnerMenus, String keys, JavascriptExecutor js)
+			throws InterruptedException {
+		for (WebElement innerMenu : CourseinnerMenus) {
+			innerMenu.sendKeys(keys);
+			js.executeScript("arguments[0].style.border='1px groove red'", innerMenu);
+			Thread.sleep(1000); // wait for see blinking
+			js.executeScript("arguments[0].style.border=''", innerMenu);
+
+		}
+	}
+
+	public static void main(String[] args) throws InterruptedException {
+		finalDemo dgl = new finalDemo();
+//		dgl.getLinks();
+		dgl.navigateCoursesPages();
+	}
+
+}

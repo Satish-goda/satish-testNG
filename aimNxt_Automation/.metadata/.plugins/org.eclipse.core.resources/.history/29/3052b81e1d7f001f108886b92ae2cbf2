@@ -1,0 +1,67 @@
+package testComponents;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.devtools.HasDevTools;
+
+public class DemoTitles {
+
+	WebDriver driver = new ChromeDriver();
+
+	public void dataPage() {
+		driver.get("https://aimnxt.org/index.html");
+		public List<String> getAllTitles() throws InterruptedException {
+			String keys = Keys.chord(Keys.CONTROL, Keys.ENTER);
+			for (int j = 0; j < menusAnchorTag.size(); j++) {
+//				js.executeScript("arguments[0].style.border='4px groove yellow'", menusAnchorTag.get(j));
+//				Thread.sleep(1000); // wait for see blinking
+//				js.executeScript("arguments[0].style.border=''", menusAnchorTag.get(j));
+				WebElement parentLi = menusAnchorTag.get(j).findElement(By.xpath("..")); // get the parent of "a" menus
+				if (parentLi.getAttribute("class").equalsIgnoreCase("dropdown")) {
+					if (menusAnchorTag.get(j).getText().equalsIgnoreCase("Study at AimNxt")) {
+						innerLoopForTitles(menusAnchorTag, j, CourseinnerMenus, keys, js);
+					} else if (menusAnchorTag.get(j).getText().equalsIgnoreCase("Partners")) {
+						innerLoopForTitles(menusAnchorTag, j, partnersinnerMenus, keys, js);
+					} else if (menusAnchorTag.get(j).getText().equalsIgnoreCase("Exposure")) {
+						innerLoopForTitles(menusAnchorTag, j, exposureinnerMenus, keys, js);
+					} else if (menusAnchorTag.get(j).getText().equalsIgnoreCase("Forms")) {
+						innerLoopForTitles(menusAnchorTag, j, formsinnerMenus, keys, js);
+					} else if (menusAnchorTag.get(j).getText().equalsIgnoreCase("Contact")) {
+						innerLoopForTitles(menusAnchorTag, j, contactinnerMenus, keys, js);
+					}
+				} else if (j > 0 && !parentLi.getAttribute("class").equalsIgnoreCase("dropdown")) {
+					actions.moveToElement(menusAnchorTag.get(j)).build().perform();
+					menusAnchorTag.get(j).sendKeys(keys);
+				}
+			}
+
+			List<String> pageTitles = new ArrayList<>();
+			List<String> windowHandles = new ArrayList<>(driver.getWindowHandles());
+			Iterator<String> it = windowHandles.iterator();
+			while (it.hasNext())
+			{
+				driver.switchTo().window(it.next());
+				devtools = ((HasDevTools) driver).getDevTools();  
+				WebElement bodyTag = driver.findElement(By.tagName("body"));
+				waitToAppearWebelement(bodyTag);
+				pageTitles.add(driver.getTitle() +" "+driver.getCurrentUrl());
+
+			}
+			return pageTitles;
+
+		}
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

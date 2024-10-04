@@ -1,0 +1,15 @@
+package aimnxt.testPages;
+
+import org.testng.annotations.Test;
+
+public class DemoforBrokenLinks {
+	
+	
+	@Test
+	public void brokenLinks() {
+		
+	}
+	
+	
+	
+}

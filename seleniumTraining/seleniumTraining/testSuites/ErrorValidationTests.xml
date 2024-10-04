@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite parallel="tests" name="Suite"> <!-- parallel ="tests" we are telling run
+	parallel this can tests/methods/classes />  -->
+	<groups>
+		<run>
+			<include name="ErrorHandling" />
+		<!-- <exclude name="anotherErrorValidation" />        this test is excluded-->
+		</run>
+	</groups>
+	<listeners>
+		<listener class-name="seleniumTraining.TestComponents.Listeners" />
+	</listeners>
+	<test thread-count="5" name="submit order Test"> <!-- thread count is  how
+		many methods we want to execute at once -->
+		<classes>
+			<class name="seleniumTraining.tests.LoginErrorTest" /> <!-- name = "projectPath.package.className" -->
+		</classes>
+	</test> <!--Test -->
+	<test thread-count="5" name="registration error validation">
+		<classes>
+			<class name="seleniumTraining.tests.RegistrationFunctionalityErrorTest" />
+		</classes>
+	</test> <!--Test -->
+		<test thread-count="5" name="registration error validation"><!-- its just a name it can be anything of your wish -->
+		<classes>
+			<class name="seleniumTraining.tests.CourseEnrolErrorTest" />
+		</classes>
+	</test> <!--Test -->
+</suite> <!--Suite -->

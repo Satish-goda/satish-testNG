@@ -1,0 +1,62 @@
+package aimnxt.testPages;
+
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.List;
+
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
+import org.testng.asserts.SoftAssert;
+
+public class DemoFor {
+	@FindBy(css = "div > ul > li > a")
+	private static List<WebElement> footerLinks;
+	@FindBy(css = "#footer > div.footer-top > div > div > div.col-lg-4.col-md-6.footer-newsletter > div > div:nth-child(2)")
+	private static WebElement footer;
+	static SoftAssert softAssert;
+
+	public static void brokenLinks() throws MalformedURLException, IOException, InterruptedException {
+		WebDriver driver = new ChromeDriver();
+		Actions act = new Actions(driver);
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		driver.get("https://aimnxt.org/");
+		driver.manage().window().maximize();
+		softAssert = new SoftAssert();
+		Thread.sleep(4000);
+		System.out.println(footerLinks);
+
+		// ((JavascriptExecutor)
+		// driver).executeScript("arguments[0].scrollIntoView(true);", footer);
+
+		// js.executeScript("arguments[0].scrollIntoView();", footer);
+		// act.moveToElement(footer).build().perform();
+		
+		
+		js.executeScript("arguments[1].scrollIntoView(true)",footer);
+
+		for (WebElement link : footerLinks) {
+			String url = link.getAttribute("href");
+			System.out.println(url);
+			HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
+			conn.setRequestMethod("HEAD");
+			conn.connect();
+			int respCode = conn.getResponseCode();
+			System.out.println(respCode);
+			softAssert.assertTrue(respCode < 400,
+					"The link with Text" + link.getText() + " is broken with code" + respCode);
+		}
+		softAssert.assertAll();
+	}
+
+	public static void main(String[] args) throws MalformedURLException, IOException, InterruptedException {
+		// TODO Auto-generated method stub
+		brokenLinks();
+	}
+
+}

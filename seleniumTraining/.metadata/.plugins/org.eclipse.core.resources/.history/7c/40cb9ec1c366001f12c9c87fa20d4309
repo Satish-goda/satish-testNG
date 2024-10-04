@@ -1,0 +1,17 @@
+package seleniumTraining.tests;
+
+import org.testng.AssertJUnit;
+import org.testng.annotations.Test;
+
+import seleniumTraining.TestComponents.Retry;
+import seleniumTraining.TestComponents.BaseTest;
+
+public class ErrorValidationTest extends BaseTest {
+	@Test(groups = { "ErrorHandling" }, retryAnalyzer = Retry.class )
+	public void errorValidation() {
+		landingPage.loginAplication("satishpractice8@gmail.com", "Satish@1123"); // the power of class call is getting
+																					// from landingpage varibale fro												// parent class that is baseTest
+		AssertJUnit.assertEquals("Incorrect email  password.", landingPage.getErrorMessage());
+	}
+
+}

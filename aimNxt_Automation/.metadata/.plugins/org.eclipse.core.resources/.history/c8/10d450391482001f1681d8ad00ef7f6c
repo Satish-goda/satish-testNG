@@ -1,0 +1,9 @@
+package aimnxt.testPages;
+
+import testComponents.BaseTest;
+
+public class CcnaCoursePageTest extends BaseTest {
+
+	
+	
+}

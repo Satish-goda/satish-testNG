@@ -1,0 +1,198 @@
+{
+  "menuItems": [
+    "Home",
+    "Study at AimNxt",
+    "NETWORKING (CCNA/CCNP/CCIE LABS)",
+    "CYBER SECURITY",
+    "AWS DEVOPS",
+    "AZURE DEVOPS",
+    "SALESFORCE",
+    "JAVA FULL STACK",
+    "PYTHON FULL STACK",
+    "DIGITAL MARKETING",
+    "DATA SCIENCE (AI, ML)",
+    "NETWORKING AUTOMATION",
+    "DEVNET ASSOCIATE CERTIFICATION",
+    "DRONE TRAINING",
+    "About",
+    "Partners",
+    "Hiring Partners",
+    "Service Partners",
+    "Financial Partners",
+    "News & Events",
+    "Exposure",
+    "Careers",
+    "Assessments",
+    "Gallery",
+    "FAQs",
+    "Blogs",
+    "Forms",
+    "Course Feedback form",
+    "Demo Feedback Form",
+    "HR Interview Feedback Form",
+    "Student DEMO Interested Form",
+    "Contact",
+    "Contact",
+    "Register",
+    "Placements",
+    "LMS Login"
+  ],
+  "expectedPage": [
+    "Best Software and Cyber Security Training Institute In Hyderabad",
+    "Best EdTech in Hyderabad | India | AIMNXT",
+    "Best EdTech in Hyderabad | India | AIMNXT",
+    "Student Demo Interested form",
+    "HR Interview Feedback Form",
+    "DEMO Feedback form",
+    "Course Feedback Form",
+    "Best EdTech in Hyderabad | India | AIMNXT",
+    "Best EdTech in Hyderabad | India | AIMNXT",
+    "Best EdTech in Hyderabad | India | AIMNXT",
+    "Best EdTech in Hyderabad | India | AIMNXT",
+    "Best EdTech in Hyderabad | India | AIMNXT",
+    "Best Software and Cyber Security Training Institute In Hyderabad",
+    "Best EdTech in Hyderabad | India | AIMNXT",
+    "Best EdTech in Hyderabad | India | AIMNXT",
+    "Best EdTech in Hyderabad | India | AIMNXT",
+    "Best EdTech in Hyderabad | India | AIMNXT",
+    "Drone Training With Hands-on Experience In Hyderabad",
+    "Best Data Science Course in Hyderabad | AimNxt",
+    "Best Digital Marketing Course in Hyderabad | AimNxt",
+    "Best Institute For Python Course Training In Hyderabad KPHB",
+    "Best Java Course Training Institutes in Hyderabad",
+    "Best Salesforce Course in Hyderabad | AimNxt",
+    "Best Cisco DevNet Course In Hyderabad India",
+    "CCNA CCNP Networking Course In Hyderabad",
+    "Best EdTech in Hyderabad | India | AIMNXT",
+    "Best DevOps training in Kukatpally (KPHB) Aws DevOps - Aimnxt",
+    "Best Azure DevOps Course training in Hyderabad - Aimnxt",
+    "Best Institute For Cyber Security Course Training In Hyderabad",
+    "Network Automation Course Training With Python and Ansible"
+  ],
+  "expectedPageTitlesAndUrls": [
+    {
+      "expectedTitle": "Best Institute For Cyber Security Course Training In Hyderabad",
+      "expectedUrl": "https://an.client.godainfotech.com/best-cyber-security-course-in-hyderabad.html"
+    },
+    {
+      "expectedTitle": "Best EdTech in Hyderabad | India | AIMNXT",
+      "expectedUrl": "https://an.client.godainfotech.com/careers.html"
+    },
+    {
+      "expectedTitle": "Course Feedback Form",
+      "expectedUrl": "https://docs.google.com/forms/d/e/1FAIpQLSdM9OtxMpGzYzjRDIEtY3PXDpgRrVvfy8kWJLVUzhEJiu4jnw/viewform"
+    },
+    {
+      "expectedTitle": "Best DevOps training in Kukatpally (KPHB) Aws DevOps - Aimnxt",
+      "expectedUrl": "https://an.client.godainfotech.com/best-aws-devops-training-in-kukatpally-kphb-aimnxt.html"
+    },
+    {
+      "expectedTitle": "Best EdTech in Hyderabad | India | AIMNXT",
+      "expectedUrl": "https://an.client.godainfotech.com/placements.html"
+    },
+    {
+      "expectedTitle": "Best EdTech in Hyderabad | India | AIMNXT",
+      "expectedUrl": "https://an.client.godainfotech.com/contact.html"
+    },
+    {
+      "expectedTitle": "Best EdTech in Hyderabad | India | AIMNXT",
+      "expectedUrl": "https://an.client.godainfotech.com/hiring-partners.html"
+    },
+    {
+      "expectedTitle": "Best Azure DevOps Course training in Hyderabad - Aimnxt",
+      "expectedUrl": "https://an.client.godainfotech.com/azure-devops.html"
+    },
+    {
+      "expectedTitle": "Network Automation Course Training With Python and Ansible",
+      "expectedUrl": "https://an.client.godainfotech.com/network-automation-course-training-with-python-and-ansible.html"
+    },
+    {
+      "expectedTitle": "Best Java Course Training Institutes in Hyderabad",
+      "expectedUrl": "https://an.client.godainfotech.com/best-java-course-training-in-hyderabad.html"
+    },
+    {
+      "expectedTitle": "Best Institute For Python Course Training In Hyderabad KPHB",
+      "expectedUrl": "https://an.client.godainfotech.com/best-python-course-training-in-hyderabad-kphb.html"
+    },
+    {
+      "expectedTitle": "Best Software and Cyber Security Training Institute In Hyderabad",
+      "expectedUrl": "https://an.client.godainfotech.com/blog/"
+    },
+    {
+      "expectedTitle": "Best EdTech in Hyderabad | India | AIMNXT",
+      "expectedUrl": "https://an.client.godainfotech.com/networking-assessment-test.html"
+    },
+    {
+      "expectedTitle": "Best Software and Cyber Security Training Institute In Hyderabad",
+      "expectedUrl": "https://an.client.godainfotech.com/"
+    },
+    {
+      "expectedTitle": "DEMO Feedback form",
+      "expectedUrl": "https://docs.google.com/forms/d/e/1FAIpQLSfLgp1GWlk-gS5PlZOE-V2Wvwtc_XL_JbYEGfwmbrCzTBguBw/viewform"
+    },
+    {
+      "expectedTitle": "CCNA CCNP Networking Course In Hyderabad",
+      "expectedUrl": "https://an.client.godainfotech.com/ccna-ccnp-networking-course-in-hyderabad.html"
+    },
+    {
+      "expectedTitle": "Best EdTech in Hyderabad | India | AIMNXT",
+      "expectedUrl": "https://an.client.godainfotech.com/faqs.html"
+    },
+    {
+      "expectedTitle": "Student Demo Interested form",
+      "expectedUrl": "https://docs.google.com/forms/d/e/1FAIpQLSdLATrJJ11UbbEcEE5Hsnej2ftsRieNe9-7DSyzR7xu_qgWkg/viewform"
+    },
+    {
+      "expectedTitle": "Drone Training With Hands-on Experience In Hyderabad",
+      "expectedUrl": "https://an.client.godainfotech.com/best-drone-course-training-in-hyderabad.html"
+    },
+    {
+      "expectedTitle": "Best EdTech in Hyderabad | India | AIMNXT",
+      "expectedUrl": "https://an.client.godainfotech.com/gallery.html"
+    },
+    {
+      "expectedTitle": "Best EdTech in Hyderabad | India | AIMNXT",
+      "expectedUrl": "https://an.client.godainfotech.com/about.html"
+    },
+    {
+      "expectedTitle": "Best EdTech in Hyderabad | India | AIMNXT",
+      "expectedUrl": "https://an.client.godainfotech.com/news&events.html"
+    },
+    {
+      "expectedTitle": "Best Data Science Course in Hyderabad | AimNxt",
+      "expectedUrl": "https://an.client.godainfotech.com/best-data-science-course-in-hyderabad.html"
+    },
+    {
+      "expectedTitle": "Best EdTech in Hyderabad | India | AIMNXT",
+      "expectedUrl": "https://an.client.godainfotech.com/register.html"
+    },
+    {
+      "expectedTitle": "Best Salesforce Course in Hyderabad | AimNxt",
+      "expectedUrl": "https://an.client.godainfotech.com/best-sales-force-course-in-hyderabad.html"
+    },
+    {
+      "expectedTitle": "",
+      "expectedUrl": "https://aimnxt.edison.so/signin"
+    },
+    {
+      "expectedTitle": "Best EdTech in Hyderabad | India | AIMNXT",
+      "expectedUrl": "https://an.client.godainfotech.com/financial-partners.html"
+    },
+    {
+      "expectedTitle": "HR Interview Feedback Form:",
+      "expectedUrl": "https://docs.google.com/forms/d/e/1FAIpQLSdfo5ELBYZg3JOUe7n3rxxAkjF9sjkgh2z8TqPdeUAR4NAPLA/viewform"
+    },
+    {
+      "expectedTitle": "Best Digital Marketing Course in Hyderabad | AimNxt",
+      "expectedUrl": "https://an.client.godainfotech.com/best-digital-marketing-course-in-hyderabad.html"
+    },
+    {
+      "expectedTitle": "Best Cisco DevNet Course In Hyderabad India",
+      "expectedUrl": "https://an.client.godainfotech.com/best-cisco-devnet-course-in-hyderabad-india.html"
+    },
+    {
+      "expectedTitle": "Best EdTech in Hyderabad | India | AIMNXT",
+      "expectedUrl": "https://an.client.godainfotech.com/service-partners.html"
+    }
+  ]
+}
